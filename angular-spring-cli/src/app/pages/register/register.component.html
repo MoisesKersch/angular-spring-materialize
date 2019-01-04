@@ -1,0 +1,82 @@
+<meta meta charset=utf-8>
+<div id="login-page" class="row">
+	<div class="col s12 z-depth-4 card-panel">
+		<form class="login-form" (ngSubmit)="save(userForm)" [formGroup]="userForm">
+			<div class="row">
+				<div class="input-field col s12 center">
+					<h4>Register</h4>
+					<p class="center"></p>
+				</div>
+			</div>
+
+			<div class="row margin">
+				<div class="input-field col s12">
+					<i class="material-icons prefix pt-5">person_outline</i> <input id="username" type="text" name="username" required formControlName="username">
+					<div *ngIf="userForm.get('username').invalid && userForm.get('username').touched">
+						<div class="input-field col s2" style="width: 14.3%;"></div>
+						<div class="error">Este campo é obrigatório.</div>
+					</div>
+					<label for="username" class="center-align">Username</label>
+				</div>
+			</div>
+
+			<div class="row margin">
+				<div class="input-field col s12">
+					<i class="material-icons prefix pt-5">email</i> <input id="email" type="email" name="email" required formControlName="email"> <label for="email" class="center-align">Email</label>
+				</div>
+			</div>
+			<div class="row margin">
+				<div class="input-field col s12">
+					<i class="material-icons prefix pt-5">lock_outline</i> <input id="password" type="password" name="password" formControlName="password"> <label for="password">Password</label>
+				</div>
+			</div>
+			<div class="row margin">
+				<div class="input-field col s12">
+					<i class="material-icons prefix pt-5">lock_outline</i> <input id="password-confirm" type="password" name="passwordConfirm" formControlName="passwordConfirm"> <label for="password-confirm">Password
+						confirm</label>
+				</div>
+			</div>
+
+			<div class="row margin">
+				<div class="input-field col s12">
+					<i class="material-icons prefix pt-5">lock_outline</i> <input id="cpf" type="text" name="cpf" formControlName="cpf">
+					<div *ngIf="cpf.invalid && cpf.touched">
+						<div class="error" *ngIf="cpf.errors.cpfNotValid && cpf.value.length > 0">cpf is invalid!</div>
+						<div class="error" *ngIf="cpf.errors.maxlength">max size 11!</div>
+						<div class="error" *ngIf="cpf.errors.required && cpf.value.length == 0 ">required!</div>
+					</div>
+					<label for="cpf">cpf</label>
+				</div>
+			</div>
+
+			<div formGroupName="address">
+				<div class="row margin">
+					<div class="input-field col s12">
+						<i class="material-icons prefix pt-5">lock_outline</i> <input id="city" type="text" name="city" formControlName="city"> <label for="city">Password confirm</label>
+					</div>
+				</div>
+
+				<div class="row margin">
+					<div class="input-field col s12">
+						<i class="material-icons prefix pt-5">lock_outline</i> <input id="state" type="text" name="state" formControlName="state"> <label for="state">Password confirm</label>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="input-field col s12">
+					<button type="submit" class="btn waves-effect waves-light col s12">Register Now</button>
+				</div>
+				<div class="input-field col s12">
+					<p class="margin center medium-small sign-up">
+						Already have an account? <a href="page-login.html">Login</a>
+					</p>
+				</div>
+			</div>
+		</form>
+
+		<!-- 		{{userForm.get('username').invalid}} -->
+		{{ cpf.value.length | json }}
+	</div>
+</div>
