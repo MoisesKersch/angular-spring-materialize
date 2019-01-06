@@ -11,12 +11,12 @@
 
 			<div class="row margin">
 				<div class="input-field col s12">
-					<i class="material-icons prefix pt-5">person_outline</i> <input id="username" type="text" name="username" required formControlName="username">
-					<div *ngIf="userForm.get('username').invalid && userForm.get('username').touched">
+					<i class="material-icons prefix pt-5">person_outline</i> <input id="userName" type="text" name="userName" required formControlName="userName">
+					<div *ngIf="userForm.get('userName').invalid && userForm.get('userName').touched">
 						<div class="input-field col s2" style="width: 14.3%;"></div>
 						<div class="error">Este campo é obrigatório.</div>
 					</div>
-					<label for="username" class="center-align">Username</label>
+					<label for="userName" class="center-align">userName</label>
 				</div>
 			</div>
 
@@ -70,13 +70,13 @@
 				</div>
 				<div class="input-field col s12">
 					<p class="margin center medium-small sign-up">
-						Already have an account? <a href="page-login.html">Login</a>
+						Already have an account? <a href="login">Login</a>
 					</p>
 				</div>
 			</div>
 		</form>
 
-		<!-- 		{{userForm.get('username').invalid}} -->
+		<!-- 		{{userForm.get('userName').invalid}} -->
 		{{ cpf.value.length | json }}
 	</div>
 </div>

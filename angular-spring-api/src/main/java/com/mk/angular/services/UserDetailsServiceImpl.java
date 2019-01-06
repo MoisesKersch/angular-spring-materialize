@@ -5,14 +5,17 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.mk.angular.auth.UserPrinciple;
+import com.mk.angular.model.User;
 import com.mk.angular.repositories.UserRepository;
 
 @Service
-public class UserDetailService implements UserDetailsService
+public class UserDetailsServiceImpl implements UserDetailsService
 {
 	UserRepository userRepository;
+	UserPrinciple userPrinciple;
 	
-	public UserDetailService(UserRepository userRepository)
+	public UserDetailsServiceImpl(UserRepository userRepository)
 	{
 		this.userRepository = userRepository;
 	}
@@ -20,6 +23,9 @@ public class UserDetailService implements UserDetailsService
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
 	{
-		return this.userRepository.findByUserName(username).get();
+		User user = this.userRepository.findByUserName(username).orElseThrow();
+		this.userPrinciple = new UserPrinciple(user.getId(), user.getUserName(), user.getPassword(), null);
+		
+		return this.userPrinciple;
 	}
 }

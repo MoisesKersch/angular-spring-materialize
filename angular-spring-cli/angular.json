@@ -31,9 +31,9 @@
             "scripts": [ 
                 "node_modules/jquery/dist/jquery.js",
                 "node_modules/datatables.net/js/jquery.dataTables.js",
-                "node_modules/materialize/js/materialize.min.js",
-                "node_modules/materialize/js/plugins.js",
-                "node_modules/materialize/vendors/perfect-scrollbar/perfect-scrollbar.min.js"
+                // "node_modules/materialize/js/materialize.min.js",
+                // "node_modules/materialize/js/plugins.js",
+                // "node_modules/materialize/vendors/perfect-scrollbar/perfect-scrollbar.min.js"
             ]
           },
           "configurations": {

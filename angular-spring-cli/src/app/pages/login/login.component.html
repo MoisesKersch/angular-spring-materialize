@@ -1,0 +1,51 @@
+<meta meta charset=utf-8>
+<div id="login-page" class="row" >
+      <div class="col s12 z-depth-4 card-panel">
+        <form class="login-form" (ngSubmit)="login(loginForm)" [formGroup]="loginForm">
+          <div class="row">
+            <div class="input-field col s12 center">
+              <img src="../../../../assets/materialize-assets/images/logo/login-logo.png" alt="" class="circle responsive-img valign profile-image-login">
+              <p class="center login-form-text">Material Design Admin Template</p>
+            </div>
+          </div>
+
+          <div class="row margin">
+            <div class="input-field col s12">
+              <i class="material-icons prefix pt-5">person_outline</i>
+              <input id="userName" type="text" formControlName="userName" name="userName">
+              <label for="userName" class="center-align">UserName</label>
+            </div>
+          </div>
+
+          <div class="row margin">
+            <div class="input-field col s12">
+              <i class="material-icons prefix pt-5">lock_outline</i>
+              <input id="password" type="password"  formControlName="password" name="password">
+              <label for="password">Password</label>
+            </div>
+          </div>
+
+          <!-- <div class="row">
+            <div class="col s12 m12 l12 ml-2 mt-3">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Remember me</label>
+            </div>
+          </div> -->
+
+          <div class="row">
+            <div class="input-field col s12">
+              <button type="submit" class="btn waves-effect waves-light col s12">Login</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6 m6 l6">
+              <p class="margin medium-small"><a href="register">Register Now!</a></p>
+            </div>
+            <div class="input-field col s6 m6 l6">
+              <p class="margin right-align medium-small"><a href="page-forgot-password.html">Forgot password ?</a></p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>

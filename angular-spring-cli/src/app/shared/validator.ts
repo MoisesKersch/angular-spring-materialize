@@ -8,11 +8,6 @@ export class Validator {
 
     }
 
-    isUserName(control: string): any 
-    {
-        this.userService.isValidUsername('orthonn').subscribe( (param) => param );
-    }
-
     isCpf(control: AbstractControl): { [key: string]: any } | null
     {
         const cpf = control.value;

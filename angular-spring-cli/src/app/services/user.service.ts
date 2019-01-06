@@ -8,33 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class UserService 
 {
-    url = 'http://localhost:8080/user/';
+    url = 'http://localhost:8080/register';
+    
     constructor(private http: HttpClient) { }
-
-    add(user: User): Observable<User>
-    {
-        let result: Observable<User>;
-        try {
-              result = this.http.post<User>('http://localhost:8080/user', user);
-        } catch (error) {
-            console.log(error);
-        }
-        return result;
-    } 
-
-    isValidUsername(username: string): Observable<Boolean>
-    {
-        let result: Observable<Boolean>;
-
-        try 
-        {
-              result = this.http.post<Boolean>('http://localhost:8080/isusername', username);
-        } catch (error) {
-            console.log(error);
-        }
-        return result;
-    } 
-
 
     save(user: User): Observable<User> 
     {

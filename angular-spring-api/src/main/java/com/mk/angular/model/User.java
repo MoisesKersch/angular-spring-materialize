@@ -1,84 +1,51 @@
 package com.mk.angular.model;
 
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 @Entity(name = "users")
-public class User implements UserDetails
-{
-	private static final long serialVersionUID = 1L;
-
+public class User {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
 	private String userName;
-	
+
 	@NotNull
 	private String email;
-	
+
 	@NotNull
 	private String password;
-	
-	@ManyToOne(cascade = {CascadeType.ALL})
+
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn
 	private Address address;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "users_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles = new HashSet<>();
+
+	public User() {}
 	
-	public User(Long id, String userName, String email, String password, Address address)
-	{
-		this.id = id;
+	public User(String userName, String email, String password, Address address, Set<Role> roles) {
 		this.userName = userName;
 		this.email = email;
 		this.password = password;
 		this.address = address;
-	}
-
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities()
-	{
-		return null;
-	}
-
-	@Override
-	public String getUsername()
-	{
-		return this.userName;
-	}
-
-	@Override
-	public boolean isAccountNonExpired()
-	{
-		return true;
-	}
-
-	@Override
-	public boolean isAccountNonLocked()
-	{
-		return true;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired()
-	{
-		return true;
-	}
-
-	@Override
-	public boolean isEnabled()
-	{
-		return true;
+		this.roles = roles;
 	}
 
 	public Long getId() {
@@ -89,13 +56,11 @@ public class User implements UserDetails
 		this.id = id;
 	}
 
-	public String getUserName()
-	{
+	public String getUserName() {
 		return userName;
 	}
 
-	public void setUserName(String userName)
-	{
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
